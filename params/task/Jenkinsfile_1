@@ -1,0 +1,23 @@
+pipeline {
+    agent any 
+    stages {
+        stage("clean up"){
+            steps{
+                deleteDir()
+            }
+        }
+        stage("create"){
+            steps{
+                 script {
+                    writeFile file: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
+                    
+                }
+            }
+        }
+        stage("show data"){
+            steps{
+                sh  "cat groovy1.txt"
+            }
+        }
+    }
+}

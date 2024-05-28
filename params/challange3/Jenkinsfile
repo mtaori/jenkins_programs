@@ -1,0 +1,26 @@
+pipeline{
+    agent any
+    parameters {
+        string(defaultValue: "TEST",
+        description: "Which environment you want to deploy", 
+        name: "deployEnv")
+
+        choice(choices: ["EU-West-2A", "EU-West-2B", "EU-West-2C"], 
+        description: "Which  zone you want to select: ", 
+        name: "deployZone")
+
+        booleanParam(defaultValue: "false", 
+        description: "Enable Service", 
+        name: "myBoolean")
+
+    }
+    stages {
+        stage("Demo"){
+            steps{
+                echo "Deploy environment: ${params.deployEnv}"
+                echo "Zone is set to: ${params.deployZone}"
+                echo "Select checkbox: ${params.myBoolean}"
+            }
+        }
+    }
+}

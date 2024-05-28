@@ -1,0 +1,23 @@
+pipeline {
+    agent any 
+    stages {
+        stage("clean up"){
+            steps{
+                deleteDir()
+            }
+        }
+        stage("create"){
+            steps{
+                 script {
+                    writeFile file: 'groovy.txt', text: "build number: ${env.BUILD_NUMBER}"
+                    
+                }
+            }
+        }
+        stage("show data"){
+            steps{
+                sh  "cat groovy.txt"
+            }
+        }
+    }
+}

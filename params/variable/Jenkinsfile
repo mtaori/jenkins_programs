@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    environment {
+        def string: "Hello"
+        def number: 20
+        def boolean: "True"
+    }
+    stages {
+        stages("Demo") {
+            steps {
+                echo "String: ${string}"
+                echo "Number: ${number}"
+                echo "Option: ${boolean}"
+
+            }
+        }
+    }
+}
